@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+if(typeof(Storage) !=="undefined"){
+    //we can accept local storage
+
+    //Just load the below line once in the browser, and it will get saved in the browser's memory
+    //Name will be displayed even after commenting out the below line after page loads for the first time
+    localStorage.myName = "Apurva Kumar Sinha";
+
+    alert("From local storage: "+localStorage.myName);
+} else {
+    //we cannot accept local storage
+    alert('No local storage accepted');
+}
+function counter () {
+    if(typeof(Storage) !=="undefined"){
+        if(sessionStorage.counter){
+            sessionStorage.counter = Number(sessionStorage.counter) + 1;
+        } else {
+            sessionStorage.counter = 1;
+        }
+        document.getElementById("number").innerHTML = "From session storage: "+sessionStorage.counter;
+        if(sessionStorage.counter >= 1){
+            document.getElementById("number").innerHTML += "<p>Try refreshing the page!</p>";
+        } else {
+            document.getElementById("number").innerHTML = "Sorry, your browser does not support web storage";
+        }
+    }
+}
+</script>
+</head>
+<body>
+    <button onclick="counter()" type="button">Add another one!</button>
+    <div id="number"></div>
+</body>
+</html>

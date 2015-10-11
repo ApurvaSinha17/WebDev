@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<body>
+<form method="get" action="http://google.com">
+<table columns=2 cellpadding=5>
+<tr>
+	<td colspan="2" style="text-align: center;"><h3>Sample Form</h3></td>
+<tr>
+<tr>
+	<td>Name:</td>
+	<td><input type="text" name="myName" /></td>
+</tr>
+<tr>
+	<td>Password:</td>
+	<td><input type="password" name="userPass" /></td>
+</tr>
+<tr>
+	<td>Gender:</td>
+	<td>
+		<select name="gender">
+			<option value="NA" disabled="disabled" selected="selected">Select Gender</option>
+			<option value="male">Male</option>
+			<option value="female">Female</option>
+		</select>
+	</td>
+</tr>
+<tr>
+	<td>Biography:</td>
+	<td><textarea name="bio" rows="5" cols="60">Add a biography</textarea></td>
+</tr>
+<tr>
+	<td>Major:</td>
+	<td>
+		<input type="radio" name="major" id="rd1" value="IT" >IT</input>
+		<input type="radio" name="major" id="rd2" value="CS" >CS</input>
+		<input type="radio" name="major" id="rd3" value="Maths">Maths</input>
+	</td>
+</tr>
+<tr>
+	<td>Courses:</td>
+	<td>
+		<input type="checkbox" name="checkbox" id="checkbox1" value="DBMS" >Database Systems</input>
+		<input type="checkbox" name="checkbox" id="checkbox2" value="WEBDEV" >Web Application Development</input>
+	</td>
+</tr>
+<tr>
+	<td colspan="2" style="text-align: center;">
+		<button type="reset" style="margin-left: 10px;">Reset</button>
+		<button type="submit" style="margin-left: 10px;">Submit</button>
+	</td>
+</tr>
+</table>
+</form>
+</body>
+</html>
