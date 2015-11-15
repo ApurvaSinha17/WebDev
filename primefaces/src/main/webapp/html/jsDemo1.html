@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Manipulate HTML components by ID</title>
+</head>
+<body>
+<div id="myId">Change this</div>
+<button type="button" id="btn" onclick="ChangeMe();">Click me</button>
+<script type="text/javascript">
+	function $(id){
+		return document.getElementById(id);
+	}
+	function ChangeMe(){
+		$('myId').style.border = "1px solid red";
+		$('myId').innerHTML = "Added a border and this text";
+		$('btn').value = "Clicked";
+		$('btn').disabled = true;
+	}
+</script>
+</body>
+</html>

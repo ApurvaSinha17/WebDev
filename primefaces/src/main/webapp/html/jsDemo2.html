@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Set Interval Demo</title>
+</head>
+<body>
+<div id='myId'></div>
+<script>
+function time(){
+	var d = new Date();
+	var h = d.getHours();
+	var m = d.getMinutes();
+	var s = d.getSeconds();
+	var str=h+":"+m+":"+s;
+	document.getElementById('myId').innerHTML = str;
+}
+var initiate = setInterval(function(){time()},1000); 
+var delayedAlert = setTimeout(function(){alert("Delayed");},5000);
+</script>
+</body>
+</html>
