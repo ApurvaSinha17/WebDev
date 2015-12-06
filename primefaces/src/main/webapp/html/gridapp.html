@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="TripAdvisor coding exercise">
+	<meta name="author" content="Apurva Kumar Sinha">
+    <title>Grid App</title>
+    <script type="text/javascript">
+    <!-- Extracts width and height from the URL parameters -->
+	function getSize(width,height)
+	{
+		var myArr = new Array();
+		var query = window.location.search.substring(1);
+    	var params = query.split('&');
+    	if(params.length == 2)
+    	{
+
+    		var param1 = params[0].split('=');
+    		var param2 = params[1].split('=');
+    		if(param1.length == 2 && param2.length == 2)
+    		{
+    			<!-- Only width is accepted as the first parameter -->
+    			if (param1[0] == width)
+    			{
+            		myArr[0] = param1[1];
+        		} 
+
+        		<!-- Only height is accepted as the second parameter -->
+        		if (param2[0] == height) 
+        		{
+            		myArr[1] = param2[1];
+        		} 
+    		}
+    	} 
+
+    	return myArr;
+	}
+	<!-- Validates URL parameters -->
+	function validateParams(size){
+		if(size.length != 2  || !(size[0] == parseInt(size[0])) || !(size[1] == parseInt(size[1])) || size[0] <= 0 || size[1] <= 0)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+	<!-- Creates the grid on page load -->
+	function createTable()
+	{
+		var size = getSize('width','height');
+		var body = document.body;
+		if(!validateParams(size)){
+			<!-- Invalid URL parameters -->
+			body.innerHTML = "<p class='error'>"+"Invalid URL parameters"+"</p>";
+		} 
+		else
+		{
+			<!-- Valid URL parameters -->
+			var cols = size[0];
+			var rows = size[1];
+			var tbl  = document.createElement('table');
+			tbl.setAttribute("id","grid");
+			for(i = 0; i < rows; i++)
+			{
+
+				var tr = tbl.insertRow();
+				for(j = 0; j < cols; j++)
+				{
+					<!-- Random number between 0 and 1 is generated -->
+					var data = Math.random();
+					var td = tr.insertCell();
+					if(data > 0.5){
+						td.appendChild(document.createTextNode('X'));
+					} else {
+						td.appendChild(document.createTextNode('O'));
+					}
+				}
+			}
+			body.appendChild(tbl);  
+		}	          		
+    }
+    <!-- Flips the grid on button press -->
+    function flip()
+    {
+    	var r = document.getElementById('grid').rows;
+    	for(i=0;i<r.length;i++)
+    	{
+    		var c=r[i].cells;
+
+    		for(j=0;j<c.length;j++)
+    		{
+
+    			if(c[j].innerHTML == 'X')
+    			{
+    				c[j].innerHTML = 'O';
+    			}
+    			else
+    			{
+    				c[j].innerHTML = 'X';
+    			}
+
+    		}
+    	}	     
+    }
+	</script>
+	<style type="text/css">
+		body
+		{
+			background-color: rgba(120,255,0,0.3);
+		}
+		button 
+		{
+			background: #3498db;
+			background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+			background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+			background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+			background-image: -o-linear-gradient(top, #3498db, #2980b9);
+			background-image: linear-gradient(to bottom, #3498db, #2980b9);
+			-webkit-border-radius: 28;
+			-moz-border-radius: 28;
+			border-radius: 28px;
+			-webkit-box-shadow: 0px 1px 3px #666666;
+			-moz-box-shadow: 0px 1px 3px #666666;
+			box-shadow: 0px 1px 3px #666666;
+			font-family: Georgia;
+			color: white;
+			font-size: 20px;
+			padding: 10px 20px 10px 20px;
+			text-decoration: none;
+		}
+		button:hover 
+		{
+		  background: #3cb0fd;
+		  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+		  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+		  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+		  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+		  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+		  text-decoration: none;
+		}
+		table 
+		{ 
+			width: 100%; 
+			text-align: center; 
+			border: 2px solid #006699;
+			-webkit-border-radius: 10px;
+			-moz-border-radius: 10px;
+			border-radius: 10px;
+			border-collapse: collapse;
+			background: #fff;
+			border: 2px solid #006699;
+			font: normal 12px Verdana, Arial, Helvetica, sans-serif;
+		}
+		tr:nth-child(odd)
+		{
+			border-left: 1px solid #5E54DE;
+			border: 1px solid #5E54DE;
+			font-size: 18px;
+			font-weight: bold;
+		}
+		tr:nth-child(even)
+		{
+			background: #E1EEF4; 
+			border: 1px solid #5E54DE;
+			font-size: 18px;
+			font-weight: bold;
+		}
+		.error
+		{
+			word-wrap: break-word;
+			font-weight:bold;
+			font-family:arial, helvetica, sans-serif;
+			font-size:28px;
+			color:#B04154;
+			letter-spacing:1pt;
+			word-spacing:2pt;		
+			text-align:center;
+			line-height:1;
+		}
+	</style>
+</head>
+<body onload="createTable()" >
+	<div style="text-align: center;"><button onClick="flip();">Flip</button></div><br>
+</body>
+</html>
