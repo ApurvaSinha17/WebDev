@@ -9,6 +9,11 @@ Technologies used:
 6) CSS3
 7) JavaScript
 8) AJAX
+9) Node.js
+10) Angular.js
+11) Express
+12) Mongo DB
+13) Bootstrap
 
 Server: Tomcat v8
 
